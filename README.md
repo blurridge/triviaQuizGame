@@ -5,7 +5,11 @@ Been playing recently with Python and its use of the native Tkinter module. I de
 knowledge questions from Open Trivia DB's API upon program run. These questions are only answerable by True or False.
 
 ## How to run
-You can run the program by downloading the entire repo:
+You can run the program by downloading the entire repo. First install the requests module:
+```
+pip install requests
+```
+Then run the program using the terminal:
 ```
 python3 main.py
 ```
