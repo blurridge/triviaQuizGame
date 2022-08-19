@@ -2,6 +2,7 @@
 
 import requests
 import json
+import html
 
 def get_questions_from_api(api_url):
     response = requests.get(api_url)
@@ -9,8 +10,8 @@ def get_questions_from_api(api_url):
         questions_list = list()
         data = json.loads(response.text)
         for i in range(0, len(data['results'])):
-            q = ((data['results'][i]['question'].replace("&quot;", "\"")).replace("&rsquo;", "\'")).replace("&#039;", "\'")
-            a = ((data['results'][i]['correct_answer'].replace("&quot;", "\"")).replace("&rsquo;", "\'")).replace("&#039;", "\'")
+            q = html.unescape(data['results'][i]['question'])
+            a = html.unescape(data['results'][i]['correct_answer'])
             curr_q = {"text": q, "answer": a}
             questions_list.append(curr_q)
         return questions_list 
